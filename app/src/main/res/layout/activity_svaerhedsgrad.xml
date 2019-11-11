@@ -6,4 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".SvaerhedsgradActivity">
 
+    <Button
+        android:id="@+id/button_offline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="38dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Sværhedsgrad"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Sværhedsgrad" />
+
+    <TextView
+        android:id="@+id/textView_Sværhedsgrad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="195dp"
+        android:text="Sværhedsgrad:  "
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_dr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="@+id/button_offline"
+        app:layout_constraintTop_toBottomOf="@+id/button_offline" />
+
+    <Button
+        android:id="@+id/button_regneark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="@+id/button_dr"
+        app:layout_constraintTop_toBottomOf="@+id/button_dr" />
 </androidx.constraintlayout.widget.ConstraintLayout>

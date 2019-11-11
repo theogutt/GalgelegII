@@ -2,9 +2,11 @@ package com.example.galgeleg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +15,8 @@ import com.example.galgeleg.Galgelogik.Galgelogik;
 import java.util.Date;
 
 public class SpilActivity extends AppCompatActivity {
+    private HighscoreActivity highscoreActivity;
+    private ListeObjekt listeObjekt;
     private Galgelogik galgelogik;
     private ImageView galgeImage;
     private TextView synligeBogstaver;
@@ -27,6 +31,7 @@ public class SpilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spil);
+        highscoreActivity = new HighscoreActivity();
         galgelogik = new Galgelogik();
         galgeImage = findViewById(R.id.imageView_galge);
         synligeBogstaver = findViewById(R.id.textView_synlige_bogstaver);
@@ -63,25 +68,20 @@ public class SpilActivity extends AppCompatActivity {
         submitGæt.setText("gæt");
     }
     private void slut(){
-
-            if(galgelogik.erSpilletVundet()){
+            if(galgelogik.erSpilletVundet()){highscoreActivity.liste.add(
+                    new ListeObjekt(R.id.imageView_galge,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver())));
                 Intent intent = new Intent(this, SpilVundetActivity.class);
                 intent.putExtra("antalForsøg",String.valueOf(galgelogik.getAntalForkerteBogstaver()));
                 startActivity(intent);
-                //resultat.setText("Spillet er vundet");
-                //submitGæt.setText("Spil igen");
-                //highscore kode
-                //galgelogik.getAntalForkerteBogstaver();
-                //galgelogik.getOrdet();
-                //date.getTime();
             }
-            else if(galgelogik.erSpilletTabt()) {
+            else if(galgelogik.erSpilletTabt()) {highscoreActivity.liste.add(
+                    new ListeObjekt(R.id.imageView_galge,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver())));
                 Intent intent = new Intent(this, SpilTabtActivity.class);
                 intent.putExtra("rigtigtOrd",galgelogik.getOrdet());
                 startActivity(intent);
-                //resultat.setText("Spillet er tabt");
-                //submitGæt.setText("Spil igen");
             }
+
+
     }
     private void opdaterGalgeImage(){
         switch (galgelogik.getAntalForkerteBogstaver()){
