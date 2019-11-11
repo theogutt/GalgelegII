@@ -63,8 +63,10 @@ public class SpilActivity extends AppCompatActivity {
         submitGæt.setText("gæt");
     }
     private void slut(){
+
             if(galgelogik.erSpilletVundet()){
                 Intent intent = new Intent(this, SpilVundetActivity.class);
+                intent.putExtra("antalForsøg",String.valueOf(galgelogik.getAntalForkerteBogstaver()));
                 startActivity(intent);
                 //resultat.setText("Spillet er vundet");
                 //submitGæt.setText("Spil igen");
@@ -75,6 +77,7 @@ public class SpilActivity extends AppCompatActivity {
             }
             else if(galgelogik.erSpilletTabt()) {
                 Intent intent = new Intent(this, SpilTabtActivity.class);
+                intent.putExtra("rigtigtOrd",galgelogik.getOrdet());
                 startActivity(intent);
                 //resultat.setText("Spillet er tabt");
                 //submitGæt.setText("Spil igen");
