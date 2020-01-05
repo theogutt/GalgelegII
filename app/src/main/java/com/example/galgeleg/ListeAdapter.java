@@ -18,12 +18,15 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.ListeViewHol
         public ImageView imageView;
         public TextView linje1;
         public TextView linje2;
+        public TextView linjeDato;
+
 
         public ListeViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.imageView);
             linje1=itemView.findViewById(R.id.textView_linje1);
             linje2=itemView.findViewById(R.id.textView_linje2);
+            linjeDato=itemView.findViewById(R.id.textView_linjeDato);
         }
     }
 
@@ -46,6 +49,7 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.ListeViewHol
         holder.imageView.setImageResource(R.drawable.galge);
         holder.linje1.setText(currObjekt.getLinje1());
         holder.linje2.setText(currObjekt.getLinje2());
+        holder.linjeDato.setText(currObjekt.getLinjeDato());
     }
 
     @Override

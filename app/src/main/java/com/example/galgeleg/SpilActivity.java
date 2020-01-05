@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.galgeleg.Galgelogik.Galgelogik;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class SpilActivity extends AppCompatActivity {
@@ -68,14 +71,16 @@ public class SpilActivity extends AppCompatActivity {
         submitGæt.setText("gæt");
     }
     private void slut(){
-            if(galgelogik.erSpilletVundet()){highscoreActivity.liste.add(
-                    new ListeObjekt(R.id.imageView_galge,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver())));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        if(galgelogik.erSpilletVundet()){highscoreActivity.liste.add(
+                    new ListeObjekt(R.id.imageView_galge,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver()),formatter.format(date)));
                 Intent intent = new Intent(this, SpilVundetActivity.class);
                 intent.putExtra("antalForsøg",String.valueOf(galgelogik.getAntalForkerteBogstaver()));
                 startActivity(intent);
             }
             else if(galgelogik.erSpilletTabt()) {highscoreActivity.liste.add(
-                    new ListeObjekt(R.id.imageView_galge,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver())));
+                    new ListeObjekt(R.id.imageView_galge,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver()),formatter.format(date)));
                 Intent intent = new Intent(this, SpilTabtActivity.class);
                 intent.putExtra("rigtigtOrd",galgelogik.getOrdet());
                 startActivity(intent);

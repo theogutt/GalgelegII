@@ -23,9 +23,9 @@ public class HighscoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
         if(firstTime==0) {
-            liste.add(new ListeObjekt(R.drawable.forkert3, "Ord: Motorvej ", "Forsøg: 3"));
-            liste.add(new ListeObjekt(R.drawable.forkert5, "Ord: bil ", "Forsøg: 5"));
-            liste.add(new ListeObjekt(R.drawable.forkert1, "Ord: Skovsnegl ", "Forsøg: 1"));
+            liste.add(new ListeObjekt(R.drawable.forkert3, "Ord: Motorvej ", "Forsøg: 3","test"));
+            liste.add(new ListeObjekt(R.drawable.forkert5, "Ord: bil ", "Forsøg: 5","test"));
+            liste.add(new ListeObjekt(R.drawable.forkert1, "Ord: Skovsnegl ", "Forsøg: 1","test"));
             firstTime=1;
         }
         recyclerView = findViewById(R.id.recyclerView);
