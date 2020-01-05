@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.ListeViewHolder> {
     private ArrayList<ListeObjekt> highscoreList;
@@ -46,10 +47,11 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.ListeViewHol
     public void onBindViewHolder(@NonNull ListeViewHolder holder, int position) {
         ListeObjekt currObjekt = highscoreList.get(position);
 
-        holder.imageView.setImageResource(R.drawable.galge);
+        holder.imageView.setImageResource(currObjekt.getImageInt());
         holder.linje1.setText(currObjekt.getLinje1());
         holder.linje2.setText(currObjekt.getLinje2());
         holder.linjeDato.setText(currObjekt.getLinjeDato());
+        Collections.sort(highscoreList);
     }
 
     @Override

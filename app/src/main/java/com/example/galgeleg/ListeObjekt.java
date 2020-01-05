@@ -1,6 +1,6 @@
 package com.example.galgeleg;
 
-public class ListeObjekt {
+public class ListeObjekt implements Comparable< ListeObjekt > {
     private int image;
     private String linje1;
     private String linje2;
@@ -14,7 +14,11 @@ public class ListeObjekt {
         this.linjeDato=linjeDato;
     }
 
-    public int getImage() {
+    public int getImageInt() {
+        return image;
+    }
+
+    public Integer getImageInteger() {
         return image;
     }
 
@@ -27,5 +31,10 @@ public class ListeObjekt {
     }
     public String getLinjeDato() {
         return linjeDato;
+    }
+
+    @Override
+    public int compareTo(ListeObjekt o) {
+        return this.getImageInteger().compareTo(o.getImageInteger());
     }
 }

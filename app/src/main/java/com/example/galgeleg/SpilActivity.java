@@ -28,6 +28,7 @@ public class SpilActivity extends AppCompatActivity {
     private Button submitGæt;
     private TextView resultat;
     private Date date;
+    private int lastImageResource;
     // TODO: 20-10-2019
     //Lav highscore ting
     @Override
@@ -74,13 +75,13 @@ public class SpilActivity extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         if(galgelogik.erSpilletVundet()){highscoreActivity.liste.add(
-                    new ListeObjekt(R.id.imageView_galge,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver()),formatter.format(date)));
+                    new ListeObjekt(lastImageResource,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver()),formatter.format(date)));
                 Intent intent = new Intent(this, SpilVundetActivity.class);
                 intent.putExtra("antalForsøg",String.valueOf(galgelogik.getAntalForkerteBogstaver()));
                 startActivity(intent);
             }
             else if(galgelogik.erSpilletTabt()) {highscoreActivity.liste.add(
-                    new ListeObjekt(R.id.imageView_galge,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver()),formatter.format(date)));
+                    new ListeObjekt(lastImageResource,"Ord: "+galgelogik.getOrdet(),"Forsøg: "+(galgelogik.getAntalForkerteBogstaver()),formatter.format(date)));
                 Intent intent = new Intent(this, SpilTabtActivity.class);
                 intent.putExtra("rigtigtOrd",galgelogik.getOrdet());
                 startActivity(intent);
@@ -91,18 +92,25 @@ public class SpilActivity extends AppCompatActivity {
     private void opdaterGalgeImage(){
         switch (galgelogik.getAntalForkerteBogstaver()){
             case 0: galgeImage.setImageResource(R.drawable.galge);
+            lastImageResource=R.drawable.galge;
                 break;
             case 1:galgeImage.setImageResource(R.drawable.forkert1);
+                lastImageResource=R.drawable.forkert1;
                 break;
             case 2:galgeImage.setImageResource(R.drawable.forkert2);
+                lastImageResource=R.drawable.forkert2;
                 break;
             case 3:galgeImage.setImageResource(R.drawable.forkert3);
+                lastImageResource=R.drawable.forkert3;
                 break;
             case 4:galgeImage.setImageResource(R.drawable.forkert4);
+                lastImageResource=R.drawable.forkert4;
                 break;
             case 5:galgeImage.setImageResource(R.drawable.forkert5);
+                lastImageResource=R.drawable.forkert5;
                 break;
             case 6:galgeImage.setImageResource(R.drawable.forkert6);
+                lastImageResource=R.drawable.forkert6;
                 break;
         }
     }
