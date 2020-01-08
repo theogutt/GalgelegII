@@ -1,5 +1,7 @@
 package com.example.galgeleg;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.ListeViewHolder> {
     private ArrayList<ListeObjekt> highscoreList;
@@ -59,3 +67,4 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.ListeViewHol
         return highscoreList.size();
     }
 }
+
